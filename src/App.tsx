@@ -1,46 +1,39 @@
-import { createSignal } from "solid-js";
-import logo from "./assets/logo.svg";
-import { invoke } from "@tauri-apps/api/tauri";
-import "./App.css";
+import { createSignal } from 'solid-js';
+import { invoke } from '@tauri-apps/api/tauri';
+import Keypad from './components/Keypad';
+import Input from './components/Input';
 
 function App() {
-  const [greetMsg, setGreetMsg] = createSignal("");
-  const [name, setName] = createSignal("");
+	const [expression, setExpression] = createSignal('');
+	const [result, setResult] = createSignal('');
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name: name() }));
-  }
+	const handleInputChange = (event) => {
+		setExpression(event.target.value);
+	};
 
-  return (
-    <div class="container">
-      <div>
-        <div>
-           <button>C</button>
-           <button>C</button>
-           <button>C</button>
-           <button>C</button>
-           <button>C</button>
-        </div>
-      </div>
-      <form
-        class="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
+	const calculateResult = async () => {
+		try {
+			const calcResult = await invoke('calculate', {
+				expression: expression(),
+			});
+			setResult(calcResult.toString());
+		} catch (error) {
+			setResult('Error: ' + error);
+		}
+	};
 
-      <p>{greetMsg()}</p>
-    </div>
-  );
+	const handleKeyPress = (event) => {
+		if (event.key === 'Enter') {
+			calculateResult();
+		}
+	};
+
+	return (
+		<div class='bg-gruv-bg'>
+			<Input />
+			<Keypad />
+		</div>
+	);
 }
 
 export default App;
