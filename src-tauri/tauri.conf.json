@@ -19,9 +19,9 @@
 		},
 		"windows": [
 			{
-				"title": "Gruvbox Calculator",
+				"title": "Calculator",
 				"width": 360,
-				"height": 440,
+				"height": 442,
 				"resizable": false,
 				"decorations": true
 			}

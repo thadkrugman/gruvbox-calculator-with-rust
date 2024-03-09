@@ -14,9 +14,9 @@ const Input: Component<InputProps> = ({
 	calculateResult,
 }) => {
 	return (
-		<div class='w-full p-4 flex flex-row space-x-10 justify-between items-center text-gruv-yellow font-bold'>
+		<div class='flex-1 p-4 mx-4 flex flex-row space-x-10 justify-between items-center font-bold border-b-2 border-gruv-orange'>
 			<input
-				class='bg-gruv-bg  h-12 w-1/2 border-b-2 border-gruv-blue outline-none focus:outline-none'
+				class='bg-gruv-bg  h-12 w-1/2 outline-none focus:outline-none text-gruv-yellow'
 				type='text'
 				readOnly={true}
 				value={expression()}
@@ -25,7 +25,7 @@ const Input: Component<InputProps> = ({
 				}
 				onKeyPress={(e) => e.key === 'Enter' && calculateResult()}
 			/>
-			<div class='flex flex-row justify-between w-1/2'>
+			<div class='flex flex-row justify-between w-1/2 text-gruv-yellow'>
 				<p>=</p>
 				<p>{result()}</p>
 			</div>

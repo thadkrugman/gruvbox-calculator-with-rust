@@ -21,129 +21,81 @@ const Keypad: Component<KeypadProps> = ({
 
 	return (
 		<div class='flex flex-col space-y-1 p-2 h-[360px] w-[360px]'>
+			{/* first row */}
 			<div class='flex flex-row space-x-1 h-1/5'>
 				<CalcButton
 					onClick={() => clearExpression()}
-					foreground='text-gruv-red'
+					foreground='text-gruv-blue'
 					fontWeight='font-black'
 				>
 					C
 				</CalcButton>
 				<CalcButton
-					onClick={() => addToExpression('(')}
-					foreground='text-gruv-aqua'
-				>
-					(
-				</CalcButton>
-				<CalcButton
-					onClick={() => addToExpression(')')}
-					foreground='text-gruv-aqua'
-				>
-					)
-				</CalcButton>
-				<CalcButton
 					onClick={() => addToExpression('%')}
-					foreground='text-gruv-aqua'
+					foreground='text-gruv-blue'
 				>
 					mod
 				</CalcButton>
 				<CalcButton
-					onClick={() => addToExpression('pi')}
-					foreground='text-gruv-aqua'
+					onClick={() => addToExpression('^')}
+					foreground='text-gruv-blue'
 				>
-					&pi;
+					x<sup>2</sup>
 				</CalcButton>
-			</div>
-			<div class='flex flex-row space-x-1 h-1/5'>
-				<CalcButton onClick={() => addToExpression('7')}>7</CalcButton>
-				<CalcButton onClick={() => addToExpression('8')}>8</CalcButton>
-				<CalcButton onClick={() => addToExpression('9')}>9</CalcButton>
 				<CalcButton
 					onClick={() => addToExpression('/')}
 					foreground='text-gruv-aqua'
 				>
 					&divide;
 				</CalcButton>
+			</div>
+			{/* second row */}
+			<div class='flex flex-row space-x-1 h-1/5'>
+				<CalcButton onClick={() => addToExpression('7')}>7</CalcButton>
+				<CalcButton onClick={() => addToExpression('8')}>8</CalcButton>
+				<CalcButton onClick={() => addToExpression('9')}>9</CalcButton>
 				<CalcButton
-					onClick={() => addToExpression('sqrt(2)')}
+					onClick={() => addToExpression('*')}
 					foreground='text-gruv-aqua'
 				>
-					&radic;
+					x
 				</CalcButton>
 			</div>
+			{/* third row */}
 			<div class='flex flex-row space-x-1 h-1/5'>
 				<CalcButton onClick={() => addToExpression('4')}>4</CalcButton>
 				<CalcButton onClick={() => addToExpression('5')}>5</CalcButton>
 				<CalcButton onClick={() => addToExpression('6')}>6</CalcButton>
 				<CalcButton
-					onClick={() => addToExpression('*')}
+					onClick={() => addToExpression('-')}
 					foreground='text-gruv-aqua'
 				>
-					&times;
-				</CalcButton>
-				<CalcButton
-					onClick={() => addToExpression('^')}
-					foreground='text-gruv-aqua'
-				>
-					<p>
-						3<sup>3</sup>
-					</p>
+					-
 				</CalcButton>
 			</div>
-
-			<div class='flex flex-row space-x-1 w-full h-2/5'>
-				<div class='flex flex-col space-y-1 w-full'>
-					<CalcButton onClick={() => addToExpression('1')}>
-						1
-					</CalcButton>
-					<CalcButton onClick={() => addToExpression('0')}>
-						0
-					</CalcButton>
-				</div>
-				<div class='flex flex-col space-y-1 w-full'>
-					<CalcButton onClick={() => addToExpression('2')}>
-						2
-					</CalcButton>
-					<CalcButton
-						onClick={() => addToExpression('.')}
-						foreground='text-gruv-aqua'
-					>
-						.
-					</CalcButton>
-				</div>
-				<div class='flex flex-col space-y-1 w-full'>
-					<CalcButton onClick={() => addToExpression('3')}>
-						3
-					</CalcButton>
-					<CalcButton
-						onClick={() => addToExpression(')')}
-						foreground='text-gruv-aqua'
-					>
-						%
-					</CalcButton>
-				</div>
-				<div class='flex flex-col space-y-1 w-full'>
-					<CalcButton
-						onClick={() => addToExpression('-')}
-						foreground='text-gruv-aqua'
-					>
-						-
-					</CalcButton>
-					<CalcButton
-						onClick={() => addToExpression('+')}
-						foreground='text-gruv-aqua'
-					>
-						+
-					</CalcButton>
-				</div>
-				<div class='w-full'>
-					<CalcButton
-						onClick={calculateResult}
-						foreground='text-gruv-orange'
-					>
-						=
-					</CalcButton>
-				</div>
+			{/* fourth row */}
+			<div class='flex flex-row space-x-1 h-1/5'>
+				<CalcButton onClick={() => addToExpression('1')}>1</CalcButton>
+				<CalcButton onClick={() => addToExpression('2')}>2</CalcButton>
+				<CalcButton onClick={() => addToExpression('3')}>3</CalcButton>
+				<CalcButton
+					onClick={() => addToExpression('+')}
+					foreground='text-gruv-aqua'
+				>
+					+
+				</CalcButton>
+			</div>
+			{/* fifth row */}
+			<div class='flex flex-row space-x-1 h-1/5'>
+				<CalcButton onClick={() => addToExpression('0')}>0</CalcButton>
+				<div class='w-full h-full'></div>
+				<CalcButton onClick={() => addToExpression('.')}>.</CalcButton>
+				<CalcButton
+					onClick={calculateResult}
+					foreground='text-gruv-aqua'
+				>
+					=
+				</CalcButton>
 			</div>
 		</div>
 	);
