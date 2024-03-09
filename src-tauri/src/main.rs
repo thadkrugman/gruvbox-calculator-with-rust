@@ -7,7 +7,7 @@ use meval::eval_str;
 #[tauri::command]
 fn calculate(expression: String) -> Result<f64, String> {
     eval_str(&expression)
-        .map_err(|e| e.to_string())
+        .map_err(|_| "Error".to_string())
 }
 
 fn main() {
